@@ -1,4 +1,4 @@
-# 📈 Claude Paper Trading Pipeline
+# 📈 Yahudi's Wise Man Pipeline
 
 Automasi *data pipeline* berbasis Python yang menarik data pasar saham harian dari Alpha Vantage, melakukan pembersihan dan penggabungan data, lalu mengunggahnya secara otomatis ke Google Drive. 
 
