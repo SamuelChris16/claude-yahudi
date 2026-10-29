@@ -1,2 +1,3 @@
 # claude-yahudi
-ThreeWiseMen
+TwoWiseMan
+
