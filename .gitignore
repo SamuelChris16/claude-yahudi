@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+.DS_Store
+
+# Abaikan isi folder data, tapi tetap pertahankan foldernya jika kosong
+data/*
+!data/.gitkeep
