@@ -5,7 +5,6 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-# Scope yang mengizinkan Python memodifikasi file yang ia buat
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
 
 def upload_csv_to_drive(file_path: str, folder_id: str, credentials_path: str) -> None:
