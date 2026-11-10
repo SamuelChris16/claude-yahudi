@@ -1,0 +1,90 @@
+# ============ PORTOFOLIO ============
+portfolio:
+  core:                       # inti (ETF), total target 55%
+    - {ticker: VOO, target_weight: 0.55, sector: "Broad Market"}
+  satellite:                  # satelit, total target 45%
+    - {ticker: AAPL, target_weight: 0.09, sector: "Technology"}
+    - {ticker: MSFT, target_weight: 0.09, sector: "Technology"}
+    - {ticker: JNJ,  target_weight: 0.09, sector: "Healthcare"}
+    - {ticker: JPM,  target_weight: 0.09, sector: "Financials"}
+    - {ticker: PG,   target_weight: 0.09, sector: "Consumer Staples"}
+  base_currency: IDR
+  weekly_savings_idr: 500000  # ubah sesuai tabunganmu
+
+# ============ RISIKO ============
+risk:
+  max_weight_single_stock: 0.10    # maks 10% per saham (satelit)
+  max_weight_sector: 0.30          # maks 30% per sektor
+  rebalance_band_pp: 5             # rebalance bila menyimpang >5 poin persentase
+  emergency:
+    stock_drop_5d_pct: -12         # turun >12% dalam 5 hari
+    stock_drawdown_pct: -20        # turun >20% dari puncak
+    portfolio_drawdown_pct: -10    # portofolio turun >10% dari puncak
+    volume_drop_ratio: 0.3         # volume < 30% rata-rata 20 hari
+  
+# ============ TEKNIKAL ============
+technical:
+  sma: [20, 50, 200]
+  ema: [12, 26]
+  rsi: {period: 14, overbought: 75, oversold: 25}
+  macd: {fast: 12, slow: 26, signal: 9}
+  bollinger: {period: 20, std: 2}
+  atr_period: 14
+  alerts:
+    price_below_sma200: true
+    death_cross: true
+    golden_cross: true
+
+# ============ FILTER KANDIDAT BARU ============
+screening:
+  min_market_cap_usd: 10000000000   # >$10B
+  min_avg_volume: 2000000           # >2 juta lembar
+  exclude_sectors_over_limit: true
+
+# ============ SUMBER BERITA ============
+news:
+  lookback_days: 7
+  max_items_per_ticker: 5
+  whitelist_sources:
+    - Reuters
+    - Bloomberg
+    - Wall Street Journal
+    - CNBC
+    - Barron's
+    - Financial Times
+    - MarketWatch
+    - Associated Press
+  rumor_patterns:                   # tandai sebagai RUMOR-TERBATAS
+    - "people familiar with"
+    - "sources say"
+    - "according to sources"
+    - "reportedly"
+    - "in talks"
+    - "considering"
+    - "exploring"
+  material_keywords:                # picu darurat bila muncul
+    - "bankruptcy"
+    - "default"
+    - "halt"
+    - "SEC investigation"
+    - "fraud"
+    - "recall"
+    - "CEO resigns"
+    - "restatement"
+
+# ============ SEC EDGAR ============
+sec:
+  forms: ["8-K", "4"]
+  lookback_days: 30
+  max_requests_per_second: 8       # batas SEC 10, kita beri margin
+
+# ============ ANGGARAN API ============
+api_budget:
+  alphavantage: {daily_limit: 25, delay_seconds: 12, reserve: 5}
+  finnhub: {per_minute_limit: 60}
+  # reserve = sisa request yang sengaja tidak dipakai (cadangan)
+
+# ============ PATH ============
+paths:
+  database: data/market.db
+  reports: reports/

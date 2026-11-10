@@ -1,0 +1,5 @@
+ticker,shares,avg_cost_usd,buy_date,kurs_beli,catatan
+VOO,0.50,520.00,2026-10-05,16500,contoh - ganti dengan data aslimu
+AAPL,0.10,225.00,2026-10-12,16500,contoh
+MSFT,0.05,410.00,2026-10-12,16500,contoh
+CASH,15.00,1.00,2026-10-26,16500,sisa dana USD
