@@ -1,0 +1,10 @@
+requests
+pandas
+numpy
+pyyaml
+python-dotenv
+tzdata; platform_system == "Windows"
+pytest
+# opsional, hanya untuk unggah lewat Drive API (src/uploader.py):
+# google-api-python-client
+# google-auth-oauthlib
