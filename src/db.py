@@ -20,6 +20,12 @@ CREATE TABLE IF NOT EXISTS news (
 CREATE TABLE IF NOT EXISTS filings (
     accession TEXT PRIMARY KEY, ticker TEXT, form TEXT, filed TEXT, url TEXT, items TEXT
 );
+CREATE TABLE IF NOT EXISTS portfolio_snapshots (
+    date TEXT PRIMARY KEY, invested REAL, cost REAL, cash REAL
+);
+CREATE TABLE IF NOT EXISTS earnings (
+    ticker TEXT, report_date TEXT, estimate TEXT, PRIMARY KEY (ticker, report_date)
+);
 CREATE TABLE IF NOT EXISTS fetch_log (
     id INTEGER PRIMARY KEY AUTOINCREMENT, source TEXT, endpoint TEXT, ticker TEXT,
     ts TEXT DEFAULT (datetime('now','localtime')), status TEXT
