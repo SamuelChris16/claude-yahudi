@@ -45,15 +45,8 @@ def run(conn, cfg):
         if requests_today(conn, "alphavantage") >= limit:
             summary["stopped_by_budget"] = True
             break
-        have = conn.execute("SELECT COUNT(*) FROM prices WHERE ticker=?", (t,)).fetchone()[0]
-        size = "full" if have < 200 else "compact"
         try:
-            data = _call(t, key, size)
-            # paket gratis kadang menolak 'full' -> coba 'compact'
-            if "Time Series (Daily)" not in data and size == "full":
-                log_fetch(conn, "alphavantage", "daily", t, "retry_compact")
-                time.sleep(b["delay_seconds"])
-                data = _call(t, key, "compact")
+            data = _call(t, key, "compact")  # paket gratis hanya mendukung compact (100 hari)
             if "Time Series (Daily)" in data:
                 n = _save(conn, t, data["Time Series (Daily)"])
                 log_fetch(conn, "alphavantage", "daily", t, "ok")
