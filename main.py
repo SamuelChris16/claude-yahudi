@@ -7,7 +7,7 @@ from src.uploader import upload_csv_to_drive
 TARGET_TICKERS = ["AAPL", "TSLA", "NVDA", "MSFT"]
 HISTORICAL_DAYS_LIMIT = 30
 OUTPUT_FILE_PATH = os.path.join("data", "gabungan_saham_claude.csv")
-CREDENTIALS_PATH = os.path.join("credentials", "service_account.json")
+CREDENTIALS_PATH = os.path.join("credentials", "client_secret.json")
 
 def main() -> None:
     load_dotenv()

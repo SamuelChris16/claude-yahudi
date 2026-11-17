@@ -2,3 +2,6 @@ requests
 pandas
 pyyaml
 python-dotenv
+google-api-python-client
+google-auth-oauthlib
+google-auth
